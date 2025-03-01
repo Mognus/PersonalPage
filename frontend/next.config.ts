@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+import { NextConfig } from "next"
 
+/** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  images: {
+    // Mit dem Nginx-Setup müssen wir nur noch den aktuellen Host erlauben
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+    ],
+  },
+}
 
-export default nextConfig;
+module.exports = nextConfig
