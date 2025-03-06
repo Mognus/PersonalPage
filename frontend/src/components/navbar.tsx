@@ -11,13 +11,11 @@ interface NavLink {
 export function Navbar({ className = "" }: { className?: string }) {
     const navLinks: NavLink[] = [
         { href: '/about', label: 'Über mich' },
-        { href: '/blog', label: 'Blog' },
-        { href: '/projects', label: 'Projekte' },
     ];
 
 
     return (
-        <nav className={`bg-white dark:bg-gray-800 shadow-md ${className}`}>
+        <nav className={`bg-blue-200 dark:bg-gray-800 shadow-md ${className}`}>
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
