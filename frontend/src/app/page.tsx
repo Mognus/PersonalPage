@@ -1,15 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getProfile } from '@/lib/profile';
 
 
 export default async function Home() {
   // Profilbild vom Backend laden
-  const profile = {
+  const profile_data = (await getProfile(1)).data
+  const profile = profile_data || {
     name: "Dein Name",
     alias: "FreierFreier23",
     bio: "Dies ist ein Platzhalter für deine Biografie.",
-    profile_image_url: null
+    profile_image: null
   };
+  console.log(profile)
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -39,9 +42,9 @@ export default async function Home() {
 
         <div className="w-full md:w-1/2 flex justify-center">
           <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-blue-600">
-            {profile.profile_image_url ? (
+            {profile.profile_image ? (
               <Image
-                src={profile.profile_image_url}
+                src={profile.profile_image}
                 alt={profile.name || 'Profilbild'}
                 fill
                 style={{ objectFit: "cover" }}

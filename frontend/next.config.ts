@@ -3,12 +3,19 @@ import { NextConfig } from "next"
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   images: {
-    // Mit dem Nginx-Setup müssen wir nur noch den aktuellen Host erlauben
     remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'nginx',
+      },
       {
         protocol: 'http',
         hostname: 'localhost',
       },
+      {
+        protocol: 'http',
+        hostname: 'backend', // Falls du diesen auch brauchst
+      }
     ],
   },
 }

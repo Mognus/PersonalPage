@@ -6,21 +6,18 @@ interface NavLink {
     label: string;
 }
 
-interface NavbarProps {
-    links?: NavLink[];
-}
 
-export function Navbar({ links = [] }: NavbarProps) {
-    const defaultLinks: NavLink[] = [
+
+export function Navbar({ className = "" }: { className?: string }) {
+    const navLinks: NavLink[] = [
         { href: '/about', label: 'Über mich' },
         { href: '/blog', label: 'Blog' },
         { href: '/projects', label: 'Projekte' },
     ];
 
-    const navLinks = links.length > 0 ? links : defaultLinks;
 
     return (
-        <nav className="bg-white dark:bg-gray-800 shadow-md">
+        <nav className={`bg-white dark:bg-gray-800 shadow-md ${className}`}>
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
